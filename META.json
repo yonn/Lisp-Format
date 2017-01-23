@@ -1,0 +1,13 @@
+{
+	"perl": "6.c",
+	"name": "Lisp::Format",
+	"version": "*",
+	"description": "String formatting like the Common Lisp format function",
+	"authors": ["yonn"],
+	"provides": {
+		"Lisp::Format": "lib/Lisp/Format.pm6"
+	},
+	"depends": [],
+	"resources": [],
+	"source-url": "https://github.com/yonn/Lisp-Format"
+}
