@@ -3,13 +3,14 @@ unit module Lisp::Format;
 multi sub format(Str:D $format, *@args) returns Str:D is export {
     my @format = $format.comb;
     my @res;
-    loop (my $i = 0; $i < ^@format; $i++) {
+    my \len = +@format;
+    loop (my $i = 0; $i < len; $i++) {
 	given @format[$i] {
 	    when '~' {
 		$i++;
 		$_ = @format[$i];
 		my @flag;
-		until $_ (elem) ['a', 'p', '~', '%'] or $i == ^@format {
+		until $_ (elem) ['a', 'p', '~', '%'] or $i == len {
 		    @flag.push: $_;
 		    $i++;
 		}
