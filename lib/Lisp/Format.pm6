@@ -21,6 +21,14 @@ multi sub format(Str:D $format, *@args) returns Str:D is export {
 	    when 'a' {
 		@res.push: @args.shift.gist;
 	    }
+
+	    when 'p' {
+		@res.push: @args.shift.perl;
+	    }
+
+	    when '%' {
+		@res.push: "\n";
+	    }
 	    
 	    default {
 		fail "Can't handle flag ~$_";
