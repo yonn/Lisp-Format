@@ -12,13 +12,23 @@ multi sub format(Str:D $format, *@args) returns Str:D is export {
 		@res.push: $_;
 	    }
 	} else {
+	    $input = False;
+	    
 	    when '~' {
 		@res.push: '~';
 	    }
+
+	    when 'a' {
+		@res.push: @args.shift.gist;
+	    }
+	    
 	    default {
-		return fail "Couldn't format flag ~$_";
+		fail "Can't handle flag ~$_";
 	    }
 	}
+    }
+    if $input {
+	fail "Trailing '~' in format string";
     }
     return [~] @res;
 }
